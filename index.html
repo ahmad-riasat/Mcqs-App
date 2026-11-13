@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduPrep Portal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 1. Simple Header -->
+  <header class="main-header">
+    <div class="logo-area">
+      <div class="logo-box">EP</div>
+      <div>
+        <h1 class="company-name">EduPrep</h1>
+        <p class="slogan">Prepare before you appear in exam</p>
+      </div>
+    </div>
+  </header>
+       <h1 class="heading">Practice Like It’s Exam Day</h1>
+       <p class="subtext">Practice timed Section-A MCQs modeled on Federal Board patterns.</p>
+
+  <main class="container">
+
+
+    <!-- 2. Class & Subject Selection Screen -->
+    <section id="selection-screen">
+      <h2 class="section-title">Select Class</h2>
+      
+      <div class="class-grid">
+        <button class="class-btn" onclick="selectClass('Class 9')">Class 9</button>
+        <button class="class-btn" onclick="selectClass('Class 10')">Class 10</button>
+        <button class="class-btn" onclick="selectClass('Class 11')">Class 11</button>
+        <button class="class-btn" onclick="selectClass('Class 12')">Class 12</button>
+      </div>
+
+      <div id="subject-section" style="display: none;">
+        <h2 class="section-title">Select Subject</h2>
+        <div id="subject-grid" class="subject-grid"></div>
+      </div>
+    </section>
+
+    <!-- 3. Exact FBISE Board OMR Table Screen -->
+    <section id="quiz-screen" class="quiz-card" style="display: none;">
+      <div class="quiz-header">
+        <div>
+          <h3 id="quiz-title">Class - Subject</h3>
+          <span class="exam-tag">FBISE Section-A Objective Paper</span>
+        </div>
+        <div class="timer">Time Remaining: <span id="time-display">00:00</span></div>
+      </div>
+
+      <div class="paper-note">
+        <strong>Note:</strong> Fill the correct bubble for each question. Each question carries 1 mark.
+      </div>
+
+      <!-- FBISE Full Paper Table -->
+      <div class="table-wrapper">
+        <table class="fbise-table">
+          <thead>
+            <tr>
+              <th class="col-sno">S#</th>
+              <th class="col-question">Question</th>
+              <th class="col-opt">(A)</th>
+              <th class="col-opt">(B)</th>
+              <th class="col-opt">(C)</th>
+              <th class="col-opt">(D)</th>
+              <th class="col-bubble-head">(A)</th>
+              <th class="col-bubble-head">(B)</th>
+              <th class="col-bubble-head">(C)</th>
+              <th class="col-bubble-head">(D)</th>
+            </tr>
+          </thead>
+          <tbody id="omr-body">
+            <!-- Dynamically generated rows -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="quiz-footer" style="justify-content: flex-end;">
+        <button id="submit-btn" class="btn btn-success" onclick="submitQuiz()">Submit Answer Sheet</button>
+      </div>
+    </section>
+
+    <!-- 4. Result Screen -->
+    <section id="result-screen" class="result-card" style="display: none;">
+      <h2>Exam Completed!</h2>
+      <div class="score-display">Your Score: <span id="final-score">0</span> / <span id="total-score">0</span></div>
+      <div id="answers-review" class="review-box"></div>
+      <button class="btn btn-primary" onclick="restartApp()">Take Another Test</button>
+    </section>
+
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

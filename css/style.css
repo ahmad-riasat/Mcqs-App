@@ -1,0 +1,439 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ==========================================
+   HEADER SECTION (FLEXBOX)
+   ========================================== */
+.main-header {
+  background: #003366;
+  border-bottom: 2px solid #e2e8f0;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-box {
+  background: #2563eb;
+  color: #ffffff;
+  font-weight: bold;
+  font-size: 20px;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.company-name {
+  font-size: 22px;
+  color: #ffffff;
+}
+
+.slogan {
+  font-size: 13px;
+  color: #ffffff;
+  font-style: italic;
+}
+
+/* ==========================================
+   CONTAINER & HEADINGS (FLEXBOX)
+   ========================================== */
+.container {
+  max-width: 1200px;
+  width: 100%;
+  margin: 30px auto;
+  padding: 0 20px;
+  flex: 1;
+}
+
+.heading {
+  color: #1e3a8a;
+  margin-top: 25px;
+  margin-left:25px;
+  font-size: 28px;
+  font-weight: 700;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.subtext {
+  color: #5a678a;
+  margin-top: 2px;
+  margin-left:25px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.section-title {
+  display: inline-block;
+  margin: 25px 0 15px 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e3a8a;
+  background-color: #e0e7ff;
+  padding: 6px 16px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   SELECTION GRIDS (CSS GRID)
+   ========================================== */
+.class-grid, 
+.subject-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.class-btn, 
+.subject-btn {
+  padding: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  background: #ffffff;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.class-btn:hover, 
+.subject-btn:hover {
+  border-color: #2563eb;
+  background: #eff6ff;
+}
+
+.class-btn.selected {
+  background: #1e40af;
+  color: #ffffff;
+  border-color: #1e40af;
+}
+
+/* ==========================================
+   QUIZ CARD & HEADER (FLEXBOX)
+   ========================================== */
+.quiz-card, 
+.result-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+}
+
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  border-bottom: 3px solid #f1f5f9;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.exam-tag {
+  display: inline-block;
+  margin-top: 4px;
+  font-size: 12px;
+  background: #e0e7ff;
+  color: #3730a3;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.timer {
+  font-weight: bold;
+  color: #1e40af;
+  background: #f4efef;
+  padding: 8px 14px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.paper-note {
+  font-size: 13.5px;
+  font-weight: bold;
+  color: #1e293b;
+  background: #f1f5f9;
+  padding: 10px 14px;
+  border-left: 4px solid #1e3a8a;
+  margin-bottom: 16px;
+  border-radius: 4px;
+}
+
+/* ==========================================
+   FBISE OMR BUBBLE TABLE STYLES
+   ========================================== */
+.table-wrapper {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  border: 1.5px solid #0f172a;
+  border-radius: 6px;
+}
+
+.fbise-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  font-size: 14px;
+  min-width: 650px; /* Ensures table scrolls cleanly on narrow screens */
+}
+
+.fbise-table th, 
+.fbise-table td {
+  border: 1px solid #64748b;
+  padding: 10px 8px;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.fbise-table th {
+  background: #f8fafc;
+  color: #0f172a;
+  font-weight: bold;
+  text-align: center;
+}
+
+.fbise-table th.col-sno { width: 45px; }
+.fbise-table th.col-question { width: 32%; }
+.fbise-table th.col-opt { width: 14%; }
+.fbise-table th.col-bubble-head { width: 35px; background: #e2e8f0; }
+
+.fbise-table td.sno-cell {
+  text-align: center;
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+.fbise-table td.question-cell {
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.fbise-table td.bubble-cell {
+  text-align: center;
+  width: 35px;
+  padding: 6px;
+}
+
+/* OMR Circles */
+.board-bubble {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid #0f172a;
+  background: #ffffff;
+  cursor: pointer;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.board-bubble:hover:not(:disabled) {
+  background: #cbd5e1;
+}
+
+.board-bubble.filled {
+  background: #0f172a !important;
+  border-color: #0f172a !important;
+}
+
+.board-bubble:disabled {
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   BUTTONS & FOOTER (FLEXBOX)
+   ========================================== */
+.quiz-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 12px;
+  border-top: 2px solid #f1f5f9;
+  padding-top: 15px;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.btn-primary { 
+  background: #1e40af; 
+  color: #ffffff; 
+  font-size: 18px; 
+}
+
+.btn-secondary { 
+  background: #64748b; 
+  color: #ffffff; 
+}
+
+.btn-success { 
+  background: #1e40af; 
+  color: #ffffff; 
+  font-size: 16px;
+}
+
+.btn:disabled { 
+  opacity: 0.5; 
+  cursor: not-allowed; 
+}
+
+/* ==========================================
+   RESULT SCREEN REVIEW (FLEXBOX & GRID)
+   ========================================== */
+.score-display {
+  font-size: 42px;
+  font-weight: bold;
+  margin: 15px 0;
+  color: #2563eb;
+}
+
+.timeout-text {
+  color: #dc2626;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.review-box {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 15px;
+}
+
+.review-item {
+  text-align: left;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid #1e40af;
+  font-size: 15px;
+  background: #fafafa;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* ==========================================
+   MEDIA QUERIES (TABLET & MOBILE)
+   ========================================== */
+
+/* Tablet Screens (max-width: 900px) */
+@media (max-width: 900px) {
+  .container {
+    margin: 20px auto;
+    padding: 0 15px;
+  }
+
+  .heading {
+    font-size: 24px;
+  }
+
+  .class-btn, 
+  .subject-btn {
+    font-size: 20px;
+    padding: 15px;
+  }
+}
+
+/* Mobile Screens (max-width: 600px) */
+@media (max-width: 600px) {
+  .main-header {
+    padding: 12px 15px;
+  }
+
+  .company-name {
+    font-size: 18px;
+  }
+
+  .slogan {
+    font-size: 11px;
+  }
+
+  .heading {
+    font-size: 20px;
+    margin-top: 15px;
+  }
+
+  .subtext {
+    font-size: 13px;
+  }
+
+  /* Switch 2-column grid to single column on mobile */
+  .class-grid, 
+  .subject-grid {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .class-btn, 
+  .subject-btn {
+    font-size: 18px;
+    padding: 14px;
+  }
+
+  .quiz-card, 
+  .result-card {
+    padding: 15px;
+  }
+
+  .quiz-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .timer {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .quiz-footer .btn {
+    width: 100%;
+  }
+
+  .score-display {
+    font-size: 32px;
+  }
+}
