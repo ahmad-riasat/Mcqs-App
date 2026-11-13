@@ -46,8 +46,18 @@ A responsive, client-side web application built with **semantic HTML5, custom CS
 +-------------------------------------------------------------------+
 | SCREEN 3: GRADED RESULT & EXPLANATION REVIEW                      |
 |   Exam Completed!                                                 |
-|   Candidate: Ayesha Khan | Roll No: 451209 | Class 12 - Biology   |
+|   Candidate: Ahmad Riasat | Roll No: 123456 | Class 12 - Biology   |
 |   Your Score: 15 / 17                                             |
 |   [ Question-by-Question Review + Correct Answer + Explanation ]  |
 |   [ Take Another Test ]                                           |
 +-------------------------------------------------------------------+
+
+## 3. Web Development Life Cycle (WDLC) Stages
+
+1. **01 — Gathering Relevant Information:** Defined the target audience (FBISE SSC & HSSC students in Classes 9–12), identified the core exam-preparation problem, and analyzed authentic Federal Board Section-A OMR sheet rules (bubble locking and 20/25-minute time limits).
+2. **02 — Planning – Sitemap & Wireframe:** Mapped out the 3-stage single-page flow (Selection Screen → Timed OMR Sheet → Graded Result Review) and drafted low-fidelity wireframes alongside the client-side file structure (`index.html`, `css/style.css`, `js/data.js`, `js/app.js`).
+3. **03 — Design & Layout:** Built the visual interface using semantic HTML5 landmarks (`<header>`, `<main>`, `<section>`, `<table>`, `<footer>`), a compact 80%-scaled UI, CSS Grid/Flexbox layouts, and mobile/tablet breakpoints (`900px` and `600px`).
+4. **04 — Content Creation:** Curated and digitized Section-A past-paper MCQs, answer keys, and explanations across Biology, Computer Science, and Mathematics into structured JavaScript objects (`js/data.js`), plus instructional UI copy.
+5. **05 — Development:** Wrote the vanilla JavaScript DOM logic (`js/app.js`) for dynamic subject filtering, permanent OMR bubble locking, live countdown timing, candidate form validation, and automated grading.
+6. **06 — Testing, Review & Launch:** Tested edge cases (empty/invalid manual form submissions, timer expiration auto-submit, double-click bubble prevention, and responsive viewports) before pushing to GitHub and deploying live on GitHub Pages.
+7. **07 — Maintenance & Updation:** Planned iterative updates for future project stages (Assignments 2 & 3), including expanding the past-paper question bank, adding user authentication, and connecting a backend database for persistent student score tracking.
