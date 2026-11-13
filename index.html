@@ -3,36 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EduPrep Portal</title>
+  <title>EduPrep Portal — FBISE OMR Practice</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-  <!-- 1. Simple Header -->
+  <!-- 1. Semantic Header -->
   <header class="main-header">
     <div class="logo-area">
-      <div class="logo-box">EP</div>
+      <div class="logo-box" aria-hidden="true">EP</div>
       <div>
         <h1 class="company-name">EduPrep</h1>
         <p class="slogan">Prepare before you appear in exam</p>
       </div>
     </div>
   </header>
-       <h1 class="heading">Practice Like It’s Exam Day</h1>
-       <p class="subtext">Practice timed Section-A MCQs modeled on Federal Board patterns.</p>
 
   <main class="container">
 
+    <!-- Hero Intro -->
+    <section class="hero-banner" aria-labelledby="hero-heading">
+      <h2 id="hero-heading" class="heading">Practice Like It’s Exam Day</h2>
+      <p class="subtext">Practice timed Section-A MCQs modeled on Federal Board (FBISE) patterns.</p>
+    </section>
 
     <!-- 2. Class & Subject Selection Screen -->
-    <section id="selection-screen">
-      <h2 class="section-title">Select Class</h2>
-      
-      <div class="class-grid">
-        <button class="class-btn" onclick="selectClass('Class 9')">Class 9</button>
-        <button class="class-btn" onclick="selectClass('Class 10')">Class 10</button>
-        <button class="class-btn" onclick="selectClass('Class 11')">Class 11</button>
-        <button class="class-btn" onclick="selectClass('Class 12')">Class 12</button>
+    <section id="selection-screen" aria-labelledby="class-heading">
+      <h2 id="class-heading" class="section-title">Select Class</h2>
+      <div class="class-grid" role="group" aria-label="Select Class">
+        <button type="button" class="class-btn" onclick="selectClass('Class 9')">Class 9</button>
+        <button type="button" class="class-btn" onclick="selectClass('Class 10')">Class 10</button>
+        <button type="button" class="class-btn" onclick="selectClass('Class 11')">Class 11</button>
+        <button type="button" class="class-btn" onclick="selectClass('Class 12')">Class 12</button>
       </div>
 
       <div id="subject-section" style="display: none;">
@@ -42,17 +44,52 @@
     </section>
 
     <!-- 3. Exact FBISE Board OMR Table Screen -->
-    <section id="quiz-screen" class="quiz-card" style="display: none;">
+    <section id="quiz-screen" class="quiz-card" style="display: none;" aria-labelledby="quiz-title">
       <div class="quiz-header">
         <div>
-          <h3 id="quiz-title">Class - Subject</h3>
+          <h2 id="quiz-title">Class - Subject</h2>
           <span class="exam-tag">FBISE Section-A Objective Paper</span>
         </div>
-        <div class="timer">Time Remaining: <span id="time-display">00:00</span></div>
+        <div class="timer" aria-live="polite">Time Remaining: <span id="time-display">00:00</span></div>
+      </div>
+
+      <!-- Candidate Details Form inside OMR Sheet -->
+      <form id="candidate-form" class="candidate-form" novalidate>
+        <div class="form-group">
+          <label for="student-name">Candidate Full Name <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="student-name"
+            name="studentName"
+            placeholder="e.g., Ahmad Riasat"
+            required
+            minlength="3"
+            maxlength="40"
+          >
+          <small class="error-msg" id="name-error" aria-live="polite"></small>
+        </div>
+
+        <div class="form-group">
+          <label for="roll-number">FBISE Roll Number (6 Digits) <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            id="roll-number"
+            name="rollNumber"
+            inputmode="numeric"
+            placeholder="e.g., 123456"
+            pattern="[0-9]{6}"
+            required
+          >
+          <small class="error-msg" id="roll-error" aria-live="polite"></small>
+        </div>
+      </form>
+
+      <div id="time-out-msg" class="paper-note timeout-alert" style="display: none;">
+        Time is up! Your answer sheet has been submitted automatically.
       </div>
 
       <div class="paper-note">
-        <strong>Note:</strong> Fill the correct bubble for each question. Each question carries 1 mark.
+        <strong>Note:</strong> Fill in your Name &amp; Roll Number above before submitting. Each question carries 1 mark.
       </div>
 
       <!-- FBISE Full Paper Table -->
@@ -60,16 +97,16 @@
         <table class="fbise-table">
           <thead>
             <tr>
-              <th class="col-sno">S#</th>
-              <th class="col-question">Question</th>
-              <th class="col-opt">(A)</th>
-              <th class="col-opt">(B)</th>
-              <th class="col-opt">(C)</th>
-              <th class="col-opt">(D)</th>
-              <th class="col-bubble-head">(A)</th>
-              <th class="col-bubble-head">(B)</th>
-              <th class="col-bubble-head">(C)</th>
-              <th class="col-bubble-head">(D)</th>
+              <th scope="col" class="col-sno">S#</th>
+              <th scope="col" class="col-question">Question</th>
+              <th scope="col" class="col-opt">(A)</th>
+              <th scope="col" class="col-opt">(B)</th>
+              <th scope="col" class="col-opt">(C)</th>
+              <th scope="col" class="col-opt">(D)</th>
+              <th scope="col" class="col-bubble-head">(A)</th>
+              <th scope="col" class="col-bubble-head">(B)</th>
+              <th scope="col" class="col-bubble-head">(C)</th>
+              <th scope="col" class="col-bubble-head">(D)</th>
             </tr>
           </thead>
           <tbody id="omr-body">
@@ -78,20 +115,30 @@
         </table>
       </div>
 
-      <div class="quiz-footer" style="justify-content: flex-end;">
-        <button id="submit-btn" class="btn btn-success" onclick="submitQuiz()">Submit Answer Sheet</button>
+      <div class="quiz-footer">
+        <button type="button" id="submit-btn" class="btn btn-success" onclick="submitQuiz(false)">Submit Answer Sheet</button>
       </div>
     </section>
 
     <!-- 4. Result Screen -->
-    <section id="result-screen" class="result-card" style="display: none;">
-      <h2>Exam Completed!</h2>
-      <div class="score-display">Your Score: <span id="final-score">0</span> / <span id="total-score">0</span></div>
+    <section id="result-screen" class="result-card" style="display: none;" aria-labelledby="result-heading">
+      <h2 id="result-heading">Exam Completed!</h2>
+      <p id="result-timeout-banner" class="timeout-text" style="display: none;">
+        Auto-submitted because the exam timer expired.
+      </p>
+      <p id="result-candidate-info" class="candidate-badge"></p>
+      <div class="score-display" aria-live="polite">
+        Your Score: <span id="final-score">0</span> / <span id="total-score">0</span>
+      </div>
       <div id="answers-review" class="review-box"></div>
-      <button class="btn btn-primary" onclick="restartApp()">Take Another Test</button>
+      <button type="button" id="restart-btn" class="btn btn-primary" onclick="restartApp()">Take Another Test</button>
     </section>
 
   </main>
+
+  <footer class="main-footer">
+    <p>&copy; 2026 EduPrep Portal — Client-Side FBISE OMR Assessment Simulator</p>
+  </footer>
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
